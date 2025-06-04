@@ -27,7 +27,7 @@ CREATE ROLE antonio WITH
   NOBYPASSRLS
   ENCRYPTED PASSWORD 'SCRAM-SHA-256$4096:fD7XCwRNAKKVUeFxB0GTxg==$2QH4tfLduxwCfemQbTVxZFBQ9u/XHmL2aIieyDCwy+M=:EQ7TFGzQH2AP3yGjroHpXNLLMCgZI74FAN9B9bJJois=';
 
-GRANT backend_team, revisori, sviluppatori TO antonio;
+
 
 
 CREATE ROLE backend_team WITH
@@ -61,6 +61,7 @@ CREATE ROLE ofiuser WITH
   ENCRYPTED PASSWORD 'SCRAM-SHA-256$4096:KThBtaVwG73HGRPHyIbFow==$Mzse3RDO/XpH0fPAh38S/kcFj7HvhireOlOI+rXX6Xs=:2zbYWNORPGeZhm2/tbcs8qNF5a1e2AqKi6fMog42kLY=';
 
 GRANT pippo TO ofiuser;
+GRANT backend_team, revisori, sviluppatori TO antonio;
 
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO backend_team;
 
