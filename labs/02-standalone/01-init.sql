@@ -2,8 +2,8 @@ CREATE DATABASE ofima_corso;
 
 
 -- Ruolo senza login (gruppo o ruolo applicativo)
+
 CREATE ROLE revisori;
-CREATE ROLE backend_team NOLOGIN;
 
 CREATE ROLE sviluppatori WITH
   NOLOGIN
