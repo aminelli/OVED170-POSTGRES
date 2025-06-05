@@ -1,0 +1,63 @@
+# Use postgres/example user/password credentials
+
+services:
+
+  postgresdb:
+    #image: postgres:17
+    #image: ofima-wso2:v2
+    build: ./
+    container_name: postgresdb
+    hostname: postgresdb
+    networks:
+      - net-corso-pg
+    ports:
+      - 5432:5432
+    # set shared memory limit when using docker compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    #volumes:
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mb
+    environment:
+      POSTGRES_USER: corso
+      POSTGRES_PASSWORD: corso2025
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - vol-corso-pg:/var/lib/postgresql/data
+    #command: >
+    #  bash -c "
+    #    apt-get update && apt-get install -y net-tools nano htop iputils-ping
+    #    echo 'export PATH=$PATH:/usr/lib/postgresql/17/bin/' >> /etc/bash.bashrc
+    #  "
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    hostname: pgadmin
+    networks:
+      - net-corso-pg
+    ports:
+      - 8081:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@corso.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - vol-corso-pgadmin:/var/lib/pgadmin
+
+volumes:
+  vol-corso-pg:
+    driver: local
+  vol-corso-pgadmin:
+    driver: local
+
+networks:
+  net-corso-pg:
+    driver: bridge
+
+#  adminer:
+#    image: adminer
+#    restart: always
+#    ports:
+#      - 8080:8080
