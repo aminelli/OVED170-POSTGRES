@@ -4,7 +4,7 @@ services:
 
   postgresdb:
     #image: postgres:17
-    #image: ofima-wso2:v2
+    #image: ofima-postgres:v2
     build: ./
     container_name: postgresdb
     hostname: postgresdb
@@ -32,10 +32,10 @@ services:
     #    echo 'export PATH=$PATH:/usr/lib/postgresql/17/bin/' >> /etc/bash.bashrc
     #  "
 
-  pgadmin:
+  pgadmincli:
     image: dpage/pgadmin4
-    container_name: pgadmin
-    hostname: pgadmin
+    container_name: pgadmincli
+    hostname: pgadmincli
     networks:
       - net-corso-pg
     ports:

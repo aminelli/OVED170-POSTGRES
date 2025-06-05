@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker composte up -d
+docker compose up -d
 
 

@@ -16,7 +16,7 @@ docker run -d \
     -e POSTGRES_PASSWORD=ofima_2025_ \
     -e PGDATA=/var/lib/postgresql/data/pgdata \
 	-v vol-postgres-test:/var/lib/postgresql/data \
-	ofima-wso2:v2
+	ofima-postgres:v2
 
 docker logs -f postgres-test2
 

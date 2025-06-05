@@ -1,5 +1,5 @@
 #!/bin/bash
 
-docker composte down -v
+docker compose down -v
 
 

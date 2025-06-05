@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t ofima-wso2:v2 .
+docker build -t ofima-postgres:v2 .
