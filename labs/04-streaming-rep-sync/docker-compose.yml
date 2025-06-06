@@ -55,7 +55,8 @@ services:
       - ./common/004-restore-pagila-data-jsonb.sh:/docker-entrypoint-initdb.d/004-restore-pagila-data-jsonb.sh
       - ./common/pagila-data-yum-jsonb.backup:/docker-entrypoint-initdb.d/pagila-data-yum-jsonb.backup
       - ./common/pagila-data-apt-jsonb.backup:/docker-entrypoint-initdb.d/pagila-data-apt-jsonb.backup
- 
+      - ./replica/005-settings-replica.sh:/docker-entrypoint-initdb.d/005-settings-replica.sh
+
 
 volumes:
   vol-primary:
