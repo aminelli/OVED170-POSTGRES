@@ -1,4 +1,3 @@
-#!/bin/bash
 
 pg_restore /docker-entrypoint-initdb.d/pagila-data-apt-jsonb.backup -d pagila
 

@@ -1,4 +1,3 @@
-#!/bin/bash
 set -e
 
 psql -U postgres -c "CREATE USER replicarole WITH REPLICATION ENCRYPTED PASSWORD 'corso2025'" postgres
