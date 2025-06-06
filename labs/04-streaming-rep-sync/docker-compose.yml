@@ -1,0 +1,35 @@
+
+
+services:
+  
+  primary:
+    #image: postgres:17
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: primary
+    hostname: primary
+    ports:
+      - 5432:5432
+    shm_size: 128mb
+    environment:      
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: corso2025
+      POSTGRES_DB: 'postgres'
+      PGDATA: /var/lib/postgresql/data/pgdata
+      SERVER_NAME: 'master'
+    volumes:
+      - vol-primary:/var/lib/postgresql/data/pgdata
+      - ./common/000-create-database-users.sh:/docker-entrypoint-initdb.d/000-create-database-users.sh
+      - ./common/001-pagila-schema.sql:/docker-entrypoint-initdb.d/001-pagila-schema.sql
+      - ./common/002-pagila-schema-jsonb.sql:/docker-entrypoint-initdb.d/002-pagila-schema-jsonb.sql
+      - ./common/003-pagila-data.sql:/docker-entrypoint-initdb.d/003-pagila-data.sql
+      - ./common/004-restore-pagila-data-jsonb.sh:/docker-entrypoint-initdb.d/004-restore-pagila-data-jsonb.sh
+      - ./common/pagila-data-yum-jsonb.backup:/docker-entrypoint-initdb.d/pagila-data-yum-jsonb.backup
+      - ./common/pagila-data-apt-jsonb.backup:/docker-entrypoint-initdb.d/pagila-data-apt-jsonb.backup
+      
+
+
+volumes:
+  vol-primary:
+    driver: local
