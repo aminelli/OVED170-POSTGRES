@@ -20,7 +20,11 @@ services:
       - 5432
     ports:
       - 5433:5432
-      
+    #command: >
+    #  bash -c "
+    #    chmod +x /docker-entrypoint-initdb.d/*.sh
+    #  "
+       
   #pgadmin:
   #  container_name: pgadmin4
   #  image: dpage/pgadmin4
@@ -40,7 +44,7 @@ services:
     container_name: pgadminpagila
     hostname: pgadminpagila
     ports:
-      - 5050:80
+      - 8081:80
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: root      
