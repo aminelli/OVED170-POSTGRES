@@ -57,6 +57,35 @@ services:
       - ./common/pagila-data-apt-jsonb.backup:/docker-entrypoint-initdb.d/pagila-data-apt-jsonb.backup
       - ./replica/005-settings-replica.sh:/docker-entrypoint-initdb.d/005-settings-replica.sh
 
+  replicalogical:
+    #image: postgres:17
+    #image: ofima-postgres:v2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: replicalogical
+    hostname: replicalogical
+    ports:
+      - 5434:5432
+    shm_size: 128mb
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: corso2025
+      POSTGRES_DB: 'postgres'
+      PGDATA: /var/lib/postgresql/data/pgdata
+      SERVER_NAME: 'replicalogical'
+    volumes:
+      - vol-replicalogical:/var/lib/postgresql/data
+      - ./common/000-create-database-users.sh:/docker-entrypoint-initdb.d/000-create-database-users.sh
+      - ./common/001-pagila-schema.sql:/docker-entrypoint-initdb.d/001-pagila-schema.sql
+      - ./common/002-pagila-schema-jsonb.sql:/docker-entrypoint-initdb.d/002-pagila-schema-jsonb.sql
+      - ./common/003-pagila-data.sql:/docker-entrypoint-initdb.d/003-pagila-data.sql
+      - ./common/004-restore-pagila-data-jsonb.sh:/docker-entrypoint-initdb.d/004-restore-pagila-data-jsonb.sh
+      - ./common/pagila-data-yum-jsonb.backup:/docker-entrypoint-initdb.d/pagila-data-yum-jsonb.backup
+      - ./common/pagila-data-apt-jsonb.backup:/docker-entrypoint-initdb.d/pagila-data-apt-jsonb.backup
+      - ./replica-logical/005-settings-replica-logical.sh:/docker-entrypoint-initdb.d/005-settings-replica-logical.sh
+
+      
   pgadmincli:
     image: dpage/pgadmin4
     container_name: pgadmincli
