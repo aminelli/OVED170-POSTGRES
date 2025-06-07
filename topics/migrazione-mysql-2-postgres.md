@@ -1,4 +1,6 @@
-Certo! La migrazione da **MySQL** a **PostgreSQL** può essere complessa, soprattutto per via delle differenze sintattiche, di funzionalità e di gestione dei dati tra i due RDBMS. Tuttavia, esistono diversi tool che possono aiutarti in modo efficace. Ecco un elenco dei principali:
+La migrazione da **MySQL** a **PostgreSQL** può essere complessa, soprattutto per via delle differenze sintattiche, di funzionalità e di gestione dei dati tra i due RDBMS. 
+
+Tuttavia, esistono diversi tool che possono aiutarti in modo efficace. Ecco un elenco dei principali:
 
 ---
 
@@ -213,15 +215,3 @@ products        500        0
 | Differenze nei tipi (e.g. enum) | Usa `CAST` nel file `.load`                                 |
 
 ---
-
-## Vuoi una demo guidata?
-
-Se mi dici:
-
-* Host, DB, utente e password di MySQL e PostgreSQL (anche dummy)
-* Qualche tabella d’esempio
-
-Posso generarti un file `.load` su misura per il tuo scenario.
-
-Ti serve anche la migrazione delle **stored procedure**, **trigger** o **foreign keys**?
-
