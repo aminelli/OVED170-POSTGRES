@@ -1,5 +1,4 @@
-# PAaametri posgres
-
+# Parametri posgres
 
 
 ## 🔧 Parametri di Connessione
